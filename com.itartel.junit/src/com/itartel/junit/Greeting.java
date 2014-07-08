@@ -2,13 +2,14 @@ package com.itartel.junit;
 
 public class Greeting {
 
-	public Greeting(String string) {
-		// TODO Auto-generated constructor stub
+	private final String name;
+
+	public Greeting(String name) {
+		this.name = name;
 	}
 
 	public String sayHello() {
-		// TODO Auto-generated method stub
-		return "Hello World!";
+		return "Hello " + name + "!";
 	}
 
 }
