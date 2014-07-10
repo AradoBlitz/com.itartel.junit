@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class SayHelloTest {
@@ -42,5 +43,25 @@ public class SayHelloTest {
 	public void sayHelloAssertThat() throws Exception {
 		Greeting greeting = new Greeting("World");
 		assertThat(greeting .sayHello(), new IsEqual<String>("Hello World!") );
+	}
+	
+	@Ignore()
+	@Test
+	public void ignoreTest() throws Exception {
+		fail("Should be ignored.");
+	}
+	
+	
+	@Test(timeout=500)
+	public void timeoutTest() throws Exception {
+		//Thread.sleep(501);
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void exceptionTest() throws Exception {
+		throw new RuntimeException();
+		//throw new IllegalArgumentException();
+		/* Fail */
+		//throw new Exception();
 	}
 }
