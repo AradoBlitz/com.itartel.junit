@@ -8,6 +8,7 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
@@ -18,13 +19,12 @@ public class ParameterizedTest {
 		return Arrays.asList(new Object[][]{{1,0},{2,1},{3,2}});
 	}
 	
-	private final int input;
-	private final int expected;
+	@Parameter(value = 1)
+	public int input;
 	
-	public ParameterizedTest(int expected, int input){
-		this.input = input;
-		this.expected = expected;
-	}
+	@Parameter
+	public int expected;
+
 	
 	@Test
 	public void addOneToNumber() throws Exception {
