@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -30,16 +31,19 @@ public class SayHelloTest {
 		
 	};
 	
-	@BeforeClass
-	public static void setUpClass(){
-		System.out.println("Before Class");
-	}
-	
-	@AfterClass
-	public static void tearDownClass(){
-		System.out.println("After Class");
-	}
+	@ClassRule
+	public static ExternalResource classRule = new ExternalResource(){
 
+		@Override
+		protected void after() {
+			System.out.println("After Class");
+		}
+
+		@Override
+		protected void before() throws Throwable {
+			System.out.println("Before Class");
+		}		
+	};
 	
 	@Test
 	public void sayHelloAssert() throws Exception {
